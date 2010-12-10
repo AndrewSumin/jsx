@@ -1,0 +1,6 @@
+JavaScript library.
+Work over jQuery, Sizzle or Prototype.
+
+* Allow to download files by require.
+* Has CallBack lib for async data change betwen JS components.
+* Has come Components like Calendar or Autocomplete.
