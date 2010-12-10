@@ -1,0 +1,102 @@
+.b-jsxComponents-calendar{
+    background:#FFF;
+    z-index:100;
+    border:1px solid #999;
+    padding:5px;
+    width:200px;
+}
+.b-jsxComponents-calendar,
+.b-jsxComponents-calendar table,
+.b-jsxComponents-calendar td,
+.b-jsxComponents-calendar th{
+    font-size:1em;
+}
+.b-jsxComponents-calendar-header{
+    text-align:center;
+    background-color:#fff;
+    color:#000;
+    padding-top:5px;
+    font-weight:bold;
+    font-size:1.2em;
+}
+.b-jsxComponents-calendar-body{
+  margin-top:5px;
+}    
+.b-jsxComponents-calendar-monthswitch,
+.b-jsxComponents-calendar-yearswitch{
+    font-weight:bold;
+    text-decoration:none;
+    color:#000;
+}
+.b-jsxComponents-calendar-body-dates{
+    width: 100%;
+    border-collapse:collapse;
+    border:0;
+}
+.b-jsxComponents-calendar-date{
+    text-align:center;
+    padding:5px;
+}
+.b-jsxComponents-calendar-date a, .b-jsxComponents-calendar-date span{
+    text-decoration:none;
+    color:#076CC7;
+    display:block;
+}
+.b-jsxComponents-calendar-date:hover{
+  background:#076CC7;
+}
+.b-jsxComponents-calendar-date:hover a{
+  color:#fff;
+}
+.b-jsxComponents-calendar-date-holiday{
+    background-color:#F0F0F0;
+}
+.b-jsxComponents-calendar-date-anothermonth a, .b-jsxComponents-calendar-date-anothermonth span{
+    color:#999;
+}
+.b-jsxComponents-calendar-date-today a, .b-jsxComponents-calendar-date-today span{
+    color:#f00;
+}
+
+
+.b-jsxComponents-calendar-date-disabled span{
+    color:#eee;
+}
+.b-jsxComponents-calendar-date-disabled:hover{
+  background:inherit;
+}
+.b-jsxComponents-calendar-date-disabled:hover a{
+  color:#eee;
+}
+
+.b-jsxComponents-calendar-date-holiday.b-jsxComponents-calendar-date-disabled:hover{
+    background-color:#F0F0F0;
+}
+
+.b-jsxComponents-calendar-date-selected{
+    background:#666;
+    color:#fff;
+    font-weight:bold;
+}
+.b-jsxComponents-calendar-date-selected a, .b-jsxComponents-calendar-date-selected span{
+    color:#fff;
+}
+.b-jsxComponents-calendar-prevmonth,
+.b-jsxComponents-calendar-prevyear{
+    float:left;
+    padding-left:5px;
+}
+.b-jsxComponents-calendar-nextmonth,
+.b-jsxComponents-calendar-nextyear{
+    float:right;
+    padding-right:5px;
+}
+.b-jsxComponents-iframe{
+  display:none;
+}
+.b-jsxComponents-iframe{
+  height:expression(this.parentNode.offsetHeight);
+  position:absolute;
+  z-index:-1;
+  display:expression('block');
+}

@@ -1,0 +1,11 @@
+.jsxComponents-Hint-List,
+.jsxComponents-hint{
+  font-size:.8em;
+  line-height:1.8em;
+}
+  .jsxComponents-Hint-List-Item{
+    color:#666;
+    border-bottom:1px dotted #666;
+    cursor:pointer;
+    display:inline;
+  }

@@ -1,0 +1,18 @@
+.g-hidden{
+  display:none;
+}
+
+.b-jsxComponents-calendarInputs{
+  position:relative;
+  /*z-index:100;*/
+}
+
+.b-jsxComponents-calendarInputs-popup{
+  position:absolute;
+  left:0;
+  top:1.5em;
+}
+.b-jsxComponents-calendarInputs-clickedText{
+  border-bottom:1px dashed #336AA4;
+  cursor:pointer;
+}

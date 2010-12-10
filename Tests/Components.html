@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>components.js tests</title>
+		<link rel="stylesheet" type="text/css" href="../css/jsUnitStyle.css">
+		<script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+		<script language="JavaScript" type="text/javascript" src="jsmock/mock.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../jsx.js">
+		  return {base:'jquery'}
+		</script>
+    <script language="JavaScript" type="text/javascript" src="../Components.js"></script>
+	</head>
+	<body>
+    </body>
+	<script type="text/javascript">
+
+    function test_getComponentName(){
+        assertEquals('foo', jsx.Components.getComponentName('{bar}.foo'));
+    }
+    function test_getComponent(){
+        assertEquals(null, jsx.Components.getComponent('{bar}.foo'));
+        window.bar = {foo:{}};
+        assertEquals(window.bar.foo, jsx.Components.getComponent('{bar}.foo'));
+        window.bar = null;
+    }
+    function test_BuildComponent(){
+      count = 0;
+      assertEquals('undefined', typeof jsx.foo);
+      jsx.Components.buildComponent('{jsx}.foo', function(){this.init = function(){}; count = 1;}, ['bar']);
+      assertEquals('object', typeof jsx.foo);
+      jsx.loaded('bar');
+      assertEquals(1, count);
+    }
+    function test_BuildComponentAfter(){
+      count = 0;
+      assertEquals('undefined', typeof jsx.foo1);
+      jsx.Components.buildComponent('{jsx}.foo1', function(){this.init = function(){}; count = 1;}, {after:['bar1']});
+      assertEquals('object', typeof jsx.foo1);
+      jsx.loaded('bar1');
+      assertEquals(1, count);
+    }
+    function test_BuildComponentBefore(){
+      count = 0;
+      assertEquals('undefined', typeof jsx.foo2);
+      jsx.Components.buildComponent('{jsx}.foo2', function(){this.init = function(){}; count = 1;}, {before:['bar2']});
+      assertEquals('undefined', typeof jsx.foo2);
+      assertEquals(0, count);
+      jsx.loaded('bar2');
+      assertEquals('object', typeof jsx.foo2);
+      assertEquals(1, count);
+    }
+    function test_BuildComponentAfterBefore(){
+      count = 0;
+      jsx.require('{jsx}.foo3', function(){count = 2});
+      assertEquals('undefined', typeof jsx.foo3);
+      jsx.Components.buildComponent('{jsx}.foo3', function(){this.init = function(){}; count = 1;}, {after:['baz3'],before:['bar3']});
+      assertEquals('undefined', typeof jsx.foo3);
+      assertEquals(0, count);
+      jsx.loaded('bar3');
+      assertEquals('object', typeof jsx.foo3);
+      assertEquals(1, count);
+      jsx.loaded('baz3');
+      assertEquals('object', typeof jsx.foo3);
+      assertEquals(2, count);
+    }
+	</script>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Debug.js tests</title>
+		<link rel="stylesheet" type="text/css" href="../css/jsUnitStyle.css">
+		<script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+		<script language="JavaScript" type="text/javascript" src="jsmock/mock.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../jsx.js">
+		  return {base:'jquery'}
+		</script>
+    <script language="JavaScript" type="text/javascript" src="../Location.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../Cookies.js"></script>
+		<script language="JavaScript" type="text/javascript">
+            jsx.DebugMode = 'all';
+            window.console = new function(){
+                this.log      = jsx.Vars.NULL;
+                this.info     = jsx.Vars.NULL;
+                this.warn     = jsx.Vars.NULL;
+                this.error    = jsx.Vars.NULL;
+                this.trace    = jsx.Vars.NULL;
+                this.dir      = jsx.Vars.NULL;
+                this.dirxml   = jsx.Vars.NULL;
+                this.group    = jsx.Vars.NULL;
+                this.groupEnd = jsx.Vars.NULL;
+            };
+		</script>
+    <script language="JavaScript" type="text/javascript" src="../Debug.js"></script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function setUp(){
+
+		}
+		function tearDown(){
+		}
+    function test_findTagInFilter(){
+        assertEquals('a: a', jsx.Console.PLUS, jsx.Console.findTagInFilter('a', 'a'));
+        assertEquals('-a: a', jsx.Console.MINUS, jsx.Console.findTagInFilter('-a', 'a'));
+        assertEquals('a: b', jsx.Console.NONE, jsx.Console.findTagInFilter('a', 'b'));
+        assertEquals(': b', jsx.Console.NONE, jsx.Console.findTagInFilter('', 'b'));
+        assertEquals('a|b: b', jsx.Console.PLUS, jsx.Console.findTagInFilter('a|b', 'b'));
+        assertEquals('a|-b: b', jsx.Console.MINUS, jsx.Console.findTagInFilter('a|-b', 'b'));
+    }
+
+    function test_findEnabledMethods(){
+        assertEquals('', jsx.Console.METHODS, jsx.Console.findEnabledMethods(''));
+        assertEquals('log|a', 'log', jsx.Console.findEnabledMethods('log|a'));
+        assertEquals('log|b|warn|a', 'log|warn', jsx.Console.findEnabledMethods('log|b|warn|a'));
+        assertEquals('-log', 'info|warn|error|dir|dirxml|group|groupEnd', jsx.Console.findEnabledMethods('-log'));
+    }
+    function test_clearDELIMs(){
+        assertEquals('a||b', 'a|b', jsx.Console.clearDELIMs('a||b'));
+        assertEquals('a||b||c|d', 'a|b|c|d', jsx.Console.clearDELIMs('a||b||c|d'));
+        assertEquals('a|', 'a', jsx.Console.clearDELIMs('a|'));
+        assertEquals('|a', 'a', jsx.Console.clearDELIMs('|a'));
+        assertEquals('|', '', jsx.Console.clearDELIMs('|'));
+    }
+
+
+    function test_clearFilterFromMethods(){
+        assertEquals('log|a', 'a', jsx.Console.clearFilterFromMethods('log|a'));
+        assertEquals('log|-warn|a', 'a', jsx.Console.clearFilterFromMethods('log|-warn|a'));
+    }
+
+    function test_getAllowDenyList(){
+        assertEquals('a', [['a'],[]].toString(), jsx.Console.getAllowDenyList('a').toString());
+        assertEquals('a|-b', [['a'],['b']].toString(), jsx.Console.getAllowDenyList('a|-b').toString());
+    }
+
+
+    function test_filter(){
+        jsx.Console.allowTags = ['a'];
+        jsx.Console.denyTags = [];
+        assertTrue('a: a', jsx.Console.filter(['a']));
+        jsx.Console.allowTags = ['a'];
+        jsx.Console.denyTags = ['b'];
+        assertTrue('a|-b: a', jsx.Console.filter(['a']));
+        jsx.Console.allowTags = ['a'];
+        jsx.Console.denyTags = ['b'];
+        assertFalse('a|-b: a, b', jsx.Console.filter(['a', 'b']));
+        jsx.Console.allowTags = ['a'];
+        jsx.Console.denyTags = [];
+        assertTrue('a: a, b', jsx.Console.filter(['a', 'b']));
+        jsx.Console.allowTags = [];
+        jsx.Console.denyTags = [];
+        assertTrue(': a, b', jsx.Console.filter(['a', 'b']));
+    }
+	</script>
+</html>

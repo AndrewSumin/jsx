@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;" />
+    <title>Components/Slider.js tests</title>
+    <script language="JavaScript" type="text/javascript" src="../../jsx.js" onload="return {autoinit:true, base:'prototype'}"></script>
+        <style type="text/css">
+            .demo
+                {width: 50%; height: 50%;}
+
+            .jsxComponents-slider-box input
+                {display:block;}
+            .jsxComponents-slider-box
+                {position: relative;}
+            .jsxComponents-slider-wrapper
+                {position:absolute; left:0; top:0;}
+            .jsxComponents-slider-wrapper-main
+                {left:3px; top:3px;}
+            .jsxComponents-slider-slider
+                {position: relative;}
+            .jsxComponents-slider-button
+                {width: 100%; height: 100%; border:none; padding:0; margin:0; background-color:transparent; display:block;}
+            .jsxComponents-slider-grab
+                {width: 20px; height:  20px; position: absolute; visibility:hidden; z-index:100;}
+
+            .jsxComponents-slider-vertical .jsxComponents-slider-wrapper
+                {width: 26px; height: 266px;}
+            .jsxComponents-slider-vertical .jsxComponents-slider-wrapper-main
+                {width: 20px; height: 240px;}
+            .jsxComponents-slider-vertical .jsxComponents-slider-slider
+                {background-image: url('v-scale.gif'); width: 20px; height: 200px;  margin: 10px 0 10px 0;}
+            .jsxComponents-slider-vertical .jsxComponents-slider-grab
+                {background-image: url('v-grab.gif');}
+
+            .jsxComponents-slider-horisontal .jsxComponents-slider-wrapper
+                {width: 266px; height: 26px;}
+            .jsxComponents-slider-horisontal .jsxComponents-slider-wrapper-main
+                {width: 240px; height: 20px;}
+            .jsxComponents-slider-horisontal .jsxComponents-slider-slider
+                {background-image: url('g-scale.gif'); width: 200px; height: 20px; margin: 0 10px 0 10px;}
+            .jsxComponents-slider-horisontal .jsxComponents-slider-grab
+                {background-image: url('g-grab.gif');}
+
+        </style>
+  </head>
+  <body>
+
+        <div style="padding:50px; position:relative;">
+        <table class="demo" align="center"><tbody><tr>
+
+            <td>
+                <div class="jsxComponents-slider-box jsxComponents-slider-vertical jsx-component" onclick="return {types:['{jsxComponents}.Slider'], '{jsxComponents}.Slider':{orientation: 'vertical', value:'2', values:['1', '2', '3', '4', '5']}}">
+                    <div class="jsxComponents-slider-wrapper">
+                        <button class="jsxComponents-slider-button jsxComponents-Slider-Button"></button>
+                        <input type="hidden" value="4" class="jsxComponents-Slider-Hidden"></input>
+                    </div>
+        
+                    <div class="jsxComponents-slider-wrapper jsxComponents-slider-wrapper-main">
+                        <input class="jsxComponents-Slider-Plus" type="image" src="plus.gif" />
+                        <div class="jsxComponents-slider-slider jsxComponents-Slider-Scale">
+                            <div class="jsxComponents-slider-grab jsxComponents-Slider-Grab"></div>
+                        </div>
+                        <input class="jsxComponents-Slider-Minus" type="image" src="minus.gif" />
+                     </div>
+                </div>
+             </td>                
+             <td>
+                <div class="jsxComponents-slider-box jsxComponents-slider-horisontal jsx-component" onclick="return {types:['{jsxComponents}.Slider'], '{jsxComponents}.Slider':{orientation: 'horizontal', range:[-10, 20], step:0.1}}">
+                    <div class="jsxComponents-slider-wrapper">
+                        <button class="jsxComponents-slider-button jsxComponents-Slider-Button"></button>
+                        <input type="hidden" class="jsxComponents-Slider-Hidden"></input>
+                    </div>
+                    <div class="jsxComponents-slider-wrapper jsxComponents-slider-wrapper-main">
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td><input class="jsxComponents-Slider-Minus" type="image" src="minus.gif" /></td>
+                                    <td>
+                                        <div class="jsxComponents-slider-slider jsxComponents-Slider-Scale">
+                                            <div class="jsxComponents-slider-grab jsxComponents-Slider-Grab"></div>
+                                        </div>
+                                    </td>
+                                    <td><input class="jsxComponents-Slider-Plus" type="image" src="plus.gif" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                     </div>
+                </div>
+            </td>
+       </tr></tbody></table>
+       </div>
+  </body>
+</html>

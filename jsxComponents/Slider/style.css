@@ -1,0 +1,124 @@
+.jsxComponents-slider-box input {
+  display:block;
+}
+.jsxComponents-slider-box {
+  position: relative;
+}
+.jsxComponents-slider-wrapper {
+  position:absolute;
+  left:0;
+  top:0;
+}
+.jsxComponents-slider-wrapper-main {
+  left:3px;
+  top:3px;
+}
+.jsxComponents-slider-table{
+  border-collapse:collapse;
+  border:0;
+  width:100%;
+}
+.jsxComponents-slider-center{
+  width:100%;
+  padding:0 10px;
+}
+.jsxComponents-slider-slider {
+  position: relative;
+}
+.jsxComponents-slider-button {
+  width: 100%;
+  height: 100%;
+  border:none;
+  padding:0;
+  margin:0;
+  background-color:transparent;
+  display:block;
+}
+.jsxComponents-slider-grab {
+  width: 10px;
+  height: 10px;
+  cursor:pointer;
+  position: absolute;
+  visibility:hidden;
+  z-index:100;
+}
+  .jsxComponents-slider-grab-pointer{
+    font-size:0;
+  }
+  * html .jsxComponents-slider-grab-pointer {
+    filter: progid:DXImageTransform.Microsoft.Chroma(color=#fffffe);
+  }
+
+.jsxComponents-Slider-Plus,
+.jsxComponents-Slider-Minus{
+  width:20px;
+  height:20px;
+  padding:0;
+  margin:0;
+  border:0;
+}
+.jsxComponents-Slider-Minus{
+  background-image: url('minus.gif');
+}
+.jsxComponents-Slider-Plus{
+  background-image: url('plus.gif');
+}
+.jsxComponents-slider-vertical .jsxComponents-slider-wrapper {
+  width: 26px;
+  height: 100%;
+}
+.jsxComponents-slider-vertical .jsxComponents-slider-wrapper-main {
+  width: 20px;
+  height: 100%;
+}
+.jsxComponents-slider-vertical .jsxComponents-slider-slider {
+  background-image: url('v-scale.gif');
+  width: 20px;
+  height: 200px;
+  margin: 10px 0 10px 0;
+}
+.jsxComponents-slider-vertical .jsxComponents-slider-grab {
+  background:#c00;
+  margin-left:10px;
+  width:20px;
+}
+  .jsxComponents-slider-vertical .jsxComponents-slider-grab-pointer {
+    width:0;
+    border-left:0;
+    border-top:5px solid #fff;
+    border-bottom:5px solid #fff;
+    border-right:5px solid transparent;
+  }
+.jsxComponents-slider-horisontal .jsxComponents-slider-wrapper {
+  width: 266px;
+  height: 26px;
+}
+.jsxComponents-slider-horisontal .jsxComponents-slider-wrapper-main {
+  width: 240px;
+  height: 20px;
+}
+.jsxComponents-slider-horisontal .jsxComponents-slider-slider {
+  background-image: url('g-scale.gif');
+  width: 200px;
+  height: 20px;
+  margin: 0 10px 0 10px;
+}
+.jsxComponents-slider-horisontal .jsxComponents-slider-grab {
+  background:#c00;
+  margin-top:10px;
+  height:20px;
+  width:9px;
+}
+  .jsxComponents-slider-horisontal .jsxComponents-slider-grab-pointer {
+    border-top:0;
+    width:1px;
+    height:0;
+    
+    border-left:4px solid #fff;
+    border-right:4px solid #fff;
+    border-bottom:4px solid transparent;
+    
+  }
+  * html .jsxComponents-slider-horisontal .jsxComponents-slider-grab-pointer {
+    border-bottom-color:#fffffe;
+  }

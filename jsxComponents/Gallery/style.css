@@ -1,0 +1,17 @@
+.jsxComponents-Gallery-Popup{
+}
+  .jsxComponents-Gallery-Popup-Loading{
+    background:url('spinner.gif') no-repeat 50% 50%;
+  }
+  
+  .jsxComponents-Gallery-Popup-Loading .jsxComponents-Gallery-Popup-Foto{
+    visibility:hidden;
+  }
+  
+  .jsxComponents-Gallery-Popup-Foto{
+    position:absolute;
+    top:20px;
+    left: 50%;
+    -moz-box-shadow: 0 0 5px 0 #000;
+    -webkit-box-shadow: 10px 10px 25px 0 #666;
+  }

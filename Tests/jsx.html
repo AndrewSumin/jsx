@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>jsx.js tests</title>
+        <link rel="stylesheet" type="text/css" href="../css/jsUnitStyle.css">
+        <script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+        <script language="JavaScript" type="text/javascript" src="jsmock/mock.js"></script>
+        <script language="JavaScript" type="text/javascript" src="../jsx.js">
+          return {base:'jquery', build:'test'}
+        </script>
+    </head>
+    <body>
+		<script language="JavaScript" type="text/javascript">
+			function setUp(){
+			}
+			function tearDown(){
+			}
+			function test_ConstructURL(){
+				assertEquals('foo.js?build=test', jsx.ConstructURL.construct('foo'));
+				assertEquals('bar/foo.js?build=test', jsx.ConstructURL.construct('bar.foo'));
+				assertEquals('bar/foo/bar.js?build=test', jsx.ConstructURL.construct('bar.foo.bar'));
+        jsx.setAlias('foo', 'bar');
+        assertEquals('bar/bar.js?build=test', jsx.ConstructURL.construct('{foo}.bar'));
+        jsx.setAlias('foo', 'http://foo');
+        assertEquals('http://foo/bar.js?build=test', jsx.ConstructURL.construct('{foo}.bar'));
+        jsx.setAlias('foo', 'https://foo');
+        assertEquals('https://foo/bar.js?build=test', jsx.ConstructURL.construct('{foo}.bar'));
+        jsx.setAlias('foo', '../foo');
+        assertEquals('../foo/bar.js?build=test', jsx.ConstructURL.construct('{foo}.bar'));
+			}
+			function test_Loader(){
+				var count = 0;
+				jsx.require('foo', function(){
+					count++;
+					jsx.require('foo', function(){count++});
+				});
+				jsx.require('bar', function(){count++});
+				jsx.loaded('foo');
+				assertEquals(2, count);
+
+				jsx.require('foo', function(){count++});
+				assertEquals(3, count);
+
+				jsx.require('foo.bar', listener);
+				function listener(){
+					function constructor(){};
+					window.CBar = constructor;
+					window.bar = new CBar();
+				}
+				assertEquals('undefined', typeof(bar));
+				jsx.loaded('foo.bar');
+				assertEquals({}, bar);
+			}
+			function test_LoaderMulti(){
+				var count = 0;
+				jsx.require(['foo1', 'bar1'], function(){count++});
+				assertEquals(0, count);
+				jsx.loaded('foo1');
+				assertEquals(0, count);
+				jsx.loaded('bar1');
+				assertEquals(1, count);
+			}
+		</script>
+    </body>
+ </html>
+

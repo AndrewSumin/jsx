@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Редактор Jquery</title>
+    <script type="text/javascript" src="../../../../jsx.js">
+      return {
+        autoinit:true,
+        base:'jquery',
+        build:'1'
+      };
+    </script>
+    <style type="text/css">
+      body{
+        font-family:arial;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="jsx-component" onclick="return {
+              types:['{jsxComponents}.AutoComplete'],
+              '{jsxComponents}.AutoComplete':{
+                src: '../../../../jsxComponents/AutoComplete/DataExample.js',
+                id: 'Cities'
+              }
+            }">
+        <div class="b-autocomplete">
+          <div>
+            <input type="text" value="" autocomplete="off" class="b-forma-text jsx-component-autocomplete-null-input jsxComponent-AutoComplete-Input"/>
+            <input type="hidden" name="areaId" class="jsxComponent-AutoComplete-Hidden"/>
+          </div>
+          <div class="jsxComponent-AutoComplete-PopUpContainer">&#160;</div>
+        </div>
+      </div>
+  </body>
+</html>

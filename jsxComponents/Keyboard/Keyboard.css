@@ -1,0 +1,100 @@
+.jsxComponents-Keyboard{
+  position:absolute;
+  bottom:1em;
+  width:100%;
+  -moz-user-select:-moz-none;
+}
+    .jsxComponents-Keyboard-Line{
+      text-align:center;
+      clear:both;
+      white-space:nowrap;
+    }
+      .jsxComponents-Keyboard-Key{
+        color:#000;
+        text-decoration:none;
+        display:inline-block;
+        margin:.1em .1em;
+        background:#fff;
+        font-weight:bold;
+        width:1.5em;
+        height:1.5em;
+        line-height:1.5em;
+        -moz-border-radius:.2em;
+        -webkit-border-radius:.2em;
+        -moz-box-shadow:0 1px 2px 0 #597244;
+        -webkit-box-shadow:0 1px 2px 0 #597244;
+        box-shadow:0 1px 2px 0 #597244;
+      }
+        .jsxComponents-Keyboard-Key:focus{
+          outline:none;
+        }
+        .jsxComponents-Keyboard-Key:active{
+          background:#e1e9d6;
+          color:#000;
+          text-shadow:0 1px 1px #fff;
+          -moz-box-shadow:inset 0 1px 2px 0 #597244;
+          -webkit-box-shadow:inset 0 1px 2px 0 #597244;
+        }
+        
+        .jsxComponents-Keyboard-Service{
+          color:#fff;
+          background:#bbcca4;
+          text-shadow:0 -1px 1px #597244;
+          -moz-box-shadow:0 1px 2px 0 #2f4a18;
+          -webkit-box-shadow:0 1px 2px 0 #2f4a18;
+        }
+          .jsxComponents-Keyboard-Service:active{
+            color:#fff;
+            background:#869e66;
+            text-shadow:0 -1px 1px #000;
+            -moz-box-shadow:inset 0 1px 2px 0 #2f4a18;
+            -webkit-box-shadow:inset 0 1px 2px 0 #2f4a18;
+          }
+  
+        
+        .jsxComponents-Keyboard-Caps{
+          width:3.2em;
+        }
+        .jsxComponents-Keyboard-Backspace{
+          width:1.5em;
+        }
+        .jsxComponents-Keyboard-Space{
+          width:11.7em;
+        }
+        .jsxComponents-Keyboard-Month{
+          width:6.6em;
+        }
+        .jsxComponents-Keyboard-Enter{
+          width:4.9em;
+          color:#fff;
+          background:url(enter-bg.png) repeat-x;
+          text-shadow:0 -1px 1px #000;
+          -moz-box-shadow:0 1px 2px 0 #000;
+          -webkit-box-shadow:0 1px 2px 0 #000;
+        }
+          .jsxComponents-Keyboard-Enter:active{
+            color:#f2f3e6;
+            background-image:url(enter-bg-down.png);
+            text-shadow:0 -1px 1px #000;
+            -moz-box-shadow:inset 0 1px 2px 0 #000;
+            -webkit-box-shadow:inset 0 1px 2px 0 #000;
+          }
+        .jsxComponents-Keyboard-Numbers{
+          width:2.6em;
+        }
+        .jsxComponents-Keyboard-Symbols{
+          width:2.6em;
+        }
+        .jsxComponents-Keyboard-Lang{
+          width:2.1em;
+        }
+        
+        .jsxComponents-Keyboard-Fake,
+        .jsxComponents-Keyboard-Fake:active{
+          background:none;
+          cursor:default;
+          height:0;
+          -moz-box-shadow:none;
+          -webkit-box-shadow:none;
+        }
+  

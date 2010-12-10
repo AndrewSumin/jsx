@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>dates.js tests</title>
+        <link rel="stylesheet" type="text/css" href="../css/jsUnitStyle.css">
+		<script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+		<script language="JavaScript" type="text/javascript" src="jsmock/mock.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../jsx.js">
+		  return {base:'jquery'}
+		</script>
+    <script language="JavaScript" type="text/javascript" src="../Strings.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../Dates.js"></script>
+    </head>
+    <body>
+    </body>
+    <script language="JavaScript" type="text/javascript">
+		function setUp(){
+      jsx.Dates.monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+      jsx.Dates.monthNamesPartitive = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+		}
+		function tearDown(){
+		}
+		function test_Date(){
+			var d = new Date();
+			d.setYear(2006);
+            d.setDate(1);
+			d.setMonth(1);
+			d.setHours(1);
+			d.setMinutes(1);
+			d.setSeconds(1);
+			d.setMilliseconds(1);
+			assertEquals(   '2006', jsx.Dates.toFormat(d, '%Y'));
+			assertEquals(     '02', jsx.Dates.toFormat(d, '%m'));
+      assertEquals('Февраль', jsx.Dates.toFormat(d, '%B'));
+			assertEquals(     '01', jsx.Dates.toFormat(d, '%d'));
+			assertEquals(     '01', jsx.Dates.toFormat(d, '%H'));
+			assertEquals(     '01', jsx.Dates.toFormat(d, '%M'));
+			assertEquals(     '01', jsx.Dates.toFormat(d, '%S'));
+			assertEquals('2006.02.01 01:01:01', jsx.Dates.toFormat(d, '%Y.%m.%d %H:%M:%S'));
+		}
+		function test_RussianMonthNames(){
+      var d = new Date();
+      d.setDate(1);
+      d.setMonth(0); // January
+      assertEquals('1 января', jsx.Dates.toFormat(d, '%e %B'));
+		}
+		function test_DayOfWeek(){
+			var monday = 1, sunday = 0;
+			assertEquals(6, jsx.Dates.getDay(sunday, 'Monday' ));
+			assertEquals(0, jsx.Dates.getDay(monday, 'Monday' ));
+			assertEquals(6, jsx.Dates.getDay(monday, 'Tuesday'));
+		}
+		function test_changeMonth(){
+			var d = new Date();
+      var newdate;
+			d.setYear(2006);
+      d.setDate(10);
+
+      d.setMonth(9); // october
+      assertEquals('no shift', 9, jsx.Dates.changeMonth(d, 0).getMonth());
+
+      d.setMonth(9);
+			assertEquals('shift "+1"', 10, jsx.Dates.changeMonth(d, 1).getMonth());
+
+      d.setMonth(9);
+      assertEquals('shift "-1"', 8, jsx.Dates.changeMonth(d, -1).getMonth());
+
+      d.setMonth(9);
+      d.setDate(31);
+      assertEquals('no shift', 9, jsx.Dates.changeMonth(d, 0).getMonth());
+
+      d.setMonth(9);
+      d.setDate(31);
+      newdate = jsx.Dates.changeMonth(d, 1)
+      assertEquals('shift "+1"', [10, 30], [newdate.getMonth(), newdate.getDate()]);
+
+      d.setMonth(9);
+      d.setDate(31);
+      newdate = jsx.Dates.changeMonth(d, -1)
+      assertEquals('shift "-1"', [8, 30], [newdate.getMonth(), newdate.getDate()]);
+
+      d.setMonth(11);
+      d.setDate(10);
+      newdate = jsx.Dates.changeMonth(d, 1)
+      assertEquals('end year shift "+1"', [0, 10], [newdate.getMonth(), newdate.getDate()]);
+
+		}
+
+		function test_changeYear(){
+			var d = new Date();
+      var newdate;
+
+      d.setYear(2008);
+      d.setMonth(1);
+      d.setDate(29);
+      newdate = jsx.Dates.changeYear(d, 1)
+      assertEquals('shift "+1"', [2009, 1, 28], [newdate.getFullYear(), newdate.getMonth(), newdate.getDate()]);
+
+      d.setYear(2008);
+      d.setMonth(1);
+      d.setDate(29);
+      newdate = jsx.Dates.changeYear(d, -1)
+      assertEquals('shift "-1"', [2007, 1, 28], [newdate.getFullYear(),newdate.getMonth(), newdate.getDate()]);
+		}
+    function test_equal(){
+      var d1 = new Date();
+      var d2 = new Date(d1);
+      
+      assertTrue(jsx.Dates.equal(d1, d2));
+      
+      d2.setDate(d2.getDate() + 1);
+      assertFalse(jsx.Dates.equal(d1, d2));
+    }
+    function test_compare(){
+      var d1 = new Date();
+      var d2 = new Date(d1);
+      
+      assertEquals(0, jsx.Dates.compare(d1, d2));
+      
+      d2.setDate(d2.getDate() + 1);
+      assertTrue(jsx.Dates.compare(d1, d2) < 0);
+      
+      d2.setDate(d2.getDate() - 2);
+      assertTrue(jsx.Dates.compare(d1, d2) > 0);
+    }
+    function test_diffInDays(){
+      var d1 = new Date();
+      var d2 = new Date(d1);
+      
+      assertEquals(0, jsx.Dates.diffInDays(d1, d2));
+      
+      d2.setDate(d2.getDate() + 1);
+      assertEquals(-1, jsx.Dates.diffInDays(d1, d2));
+      
+      d2.setDate(d2.getDate() - 2);
+      assertEquals(1, jsx.Dates.diffInDays(d1, d2));
+    }
+    
+	</script>
+ </html>
+

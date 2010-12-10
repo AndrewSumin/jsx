@@ -1,0 +1,98 @@
+.jsxComponents-ScreenFade-hidden {
+  display:none;
+}
+.jsxComponents-ScreenFade-frame {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: none;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  z-index: 200;
+}
+
+.jsxComponents-ScreenFade-iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter:alpha(opacity=0);
+  zoom: 1;
+}
+
+.jsxComponents-ScreenFade-shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #666;
+  opacity: .5;
+  filter:alpha(opacity=50);
+  zoom: 1;
+}
+.jsxComponents-ScreenFade-container {
+  position: relative;
+  z-index:1;
+  zoom: 1;
+  height: 100%;
+  width: 0;
+  left: 50%;
+  padding-top: 5%;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-box-shadow:10px 10px 25px 0 #666666;
+}
+.jsxComponents-ScreenFade-closer {
+  background: white;
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+  position: absolute;
+  zoom: 1;
+  cursor: pointer;
+  z-index:10000;
+  right: -45px;
+  top: 0;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-box-shadow:10px 10px 25px 0 #666666;
+  -webkit-box-shadow:10px 10px 25px 0 #666666;
+}
+
+/* Popup по умолчанию, если не надо чего-то особенного
+ * можно использовать эти стили
+ */
+
+.jsxComponents-ScreenFade-Popup{
+  position:absolute;
+  z-index:1000;
+  background:#fff;
+  
+  margin:0 21%;
+  
+  -moz-box-shadow:10px 10px 25px 0 #666;
+  -moz-border-radius:15px;
+  
+  -webkit-box-shadow:10px 10px 25px 0 #666;
+  -webkit-border-radius:15px;
+}
+
+  .jsxComponents-ScreenFade-Popup_loading{
+    padding:20px;
+    width:200px;
+    margin-left:-120px;
+    color:#999;
+    font-size:2em;
+    text-align:center;
+  }
+
+  .jsxComponents-ScreenFade-Popup_small{
+    width:400px;
+    padding:20px;
+    margin-left:-220px;
+  }

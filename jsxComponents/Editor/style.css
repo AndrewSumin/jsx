@@ -1,0 +1,101 @@
+.jsxComponents-Editor{
+  border:1px solid #ddd;
+  border-top:0;
+  zoom:1;
+  overflow: hidden;
+}
+  .jsxComponents-Editor-Frame{
+    width:100%;
+    height:300px;
+    overflow:auto;
+    zoom:1;
+  }
+  .jsxComponents-Editor-Texarea{
+    border:0;
+    width:100%;
+    height:298px;
+  }
+  .jsxComponents-Editor-Buttons{
+    height:27px;
+    font-size:12px;
+    background:#ddd repeat-x url(buttons.png) 0 -135px;
+  }
+  .jsxComponents-Editor-Button{
+    width:27px;
+    height:27px;
+    background:#ddd no-repeat url(buttons.png);
+    display:block;
+    float:left;
+    cursor:pointer;
+    text-decoration:none;
+    color:#000;
+  }
+    .jsxComponents-Editor-Button:active{
+      background-color:#ccc;
+    }
+    .jsxComponents-Editor-Button:hover{
+      background-color:#a1c6e5;
+    }
+
+    .jsxComponents-Editor-Button-Separator{
+      height:14px;
+      margin-top:3px;
+      background:#eee;
+      width:1px;
+      cursor:default;
+    }
+    .jsxComponents-Editor-Button-Bold{
+      background-position:0 0;
+    }
+    .jsxComponents-Editor-Button-Italic{
+      background-position:0 -27px;
+    }
+    .jsxComponents-Editor-Button-InsertOrderedList{
+      background-position:0 -81px;
+    }
+    .jsxComponents-Editor-Button-InsertUnorderedList{
+      background-position:0 -54px;
+    }
+    .jsxComponents-Editor-Button-Undo{
+      background-position:0 -108px;
+    }
+    .jsxComponents-Editor-Button-Redo{
+      background-position:0 -74px;
+    }
+    .jsxComponents-Editor-Button-Indent{
+      background-position:0 -97px;
+    }
+    .jsxComponents-Editor-Button-Outdent{
+      background-position:0 -117px;
+    }
+    .jsxComponents-Editor-Button-Editor,
+    .jsxComponents-Editor-Button-Source{
+      width:auto;
+      height:22px;
+      background-position:0 -135px;
+      background-repeat:repeat-x;
+      padding:5px 5px 0 5px;
+      float:right;
+    }
+    .jsxComponents-Editor-Button-Source{
+      margin-right:20px;
+    }
+      .jsxComponents-Editor-Button-Editor:hover,
+      .jsxComponents-Editor-Button-Source:hover{
+        color:#000;
+      }
+      .jsxComponents-Editor-Button-Editor{
+        background-color:#eee;
+        cursor:default;
+      }
+      .jsxComponents-Editor-Source .jsxComponents-Editor-Button-Editor{
+        background-color:#ddd;
+        cursor:pointer;
+      }
+        .jsxComponents-Editor-Source .jsxComponents-Editor-Button-Editor:hover{
+          background-color:#a1c6e5;
+        }
+      .jsxComponents-Editor-Source .jsxComponents-Editor-Button-Source{
+        background-color:#eee;
+        cursor:default;
+      }

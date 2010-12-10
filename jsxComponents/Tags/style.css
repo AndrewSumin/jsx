@@ -1,0 +1,52 @@
+.jsxComponent-Tags-List{
+  list-style:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  color:#000;
+  zoom:1;
+}
+  .jsxComponent-Tags-List-Title{
+    float:left;
+    margin-right:.5em;
+    padding:.25em 0 .3em 0;
+    line-height:1.5em;
+    color:#666;
+    font-size:.8em;
+  }
+    .jsxComponent-Tags-List-Title-Filled,
+    .jsxComponent-Tags-List-Title-Empty{
+      display:none;
+    }
+      .jsx-component-tags-filled .jsxComponent-Tags-List-Title-Filled{
+        display:inline;
+      }
+      .jsx-component-tags-empty .jsxComponent-Tags-List-Title-Empty{
+        display:inline;
+      }
+      
+  .jsxComponent-Tags-Appender{
+    text-decoration:none;
+  }
+  .jsxComponent-Tags-Item{
+    float:left;
+    padding-right: 0.2em;
+    line-height:1.5em;
+    background-color:#fff79d;
+    white-space:nowrap;
+  }
+    .jsxComponent-Tags-Item-Text{
+    }
+      .jsxComponent-Tags-Item-Text-Error{
+        border-bottom:1px dotted red;
+      }
+    .jsxComponent-Tags-Item-Delete{
+      color:#999;
+      cursor:pointer;
+      text-decoration:none;
+      margin-left:2px;
+    }
+      .jsxComponent-Tags-Item-Delete:hover{
+        color:red;
+      }
+      

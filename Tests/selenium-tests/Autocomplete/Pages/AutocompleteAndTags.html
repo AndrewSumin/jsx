@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Редактор Jquery</title>
+    <script type="text/javascript" src="../../../../jsx.js">
+      return {
+        autoinit:true,
+        base:'jquery',
+        build:'1'
+      };
+    </script>
+    <style type="text/css">
+      body{
+        font-family:arial;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="jsx-component" onclick="return {
+              types:['{jsxComponents}.Tags', '{jsxComponents}.AutoComplete', '{jsxComponents}.Hint'],
+              '{jsxComponents}.AutoComplete':{
+                src: '../../../jsxComponents/AutoComplete/DataExample.js',
+                id: 'Cities'
+              },
+              '{jsxComponents}.Tags':{
+                requestname: 'areaId',
+                autosuggest: 'hard',
+                cookies: 'regions'
+              }
+            }">
+        <span class="jsxComponents-Hint-List jsx-component-autocomplete-clear-block">
+          <span class="jsxComponents-Hint-List-Title">Например: </span>
+          <span class="jsxComponents-Hint-List-Item">Москва</span>
+          <span> или </span>
+          <span class="jsxComponents-Hint-List-Item">Санкт-Петербург</span>
+        </span>
+        <span class="jsx-component-autocomplete-filled-block jsxComponents-hint">
+          Выберите регион из списка
+        </span>
+        <span class="jsx-component-autocomplete-null-block jsxComponents-hint">
+          Проверьте название региона
+        </span>
+        <span class="jsx-component-autocomplete-selected-block jsxComponents-hint">
+          Нажмите плюс
+        </span>
+        <table class="b-form-wib">
+          <tbody>
+            <tr >
+              <td class="b-form-wib-input-container">
+                <div class="b-autocomplete b-tags-autocomplete">
+                  <div>
+                    <input type="text" value="" autocomplete="off" class="b-forma-text jsx-component-autocomplete-null-input jsxComponent-AutoComplete-Input jsxComponent-Tags-Input jsxComponents-Hint-Input"/>
+                    <input type="hidden" name="areaId" class="jsxComponent-AutoComplete-Hidden"/>
+                  </div>
+                  <div class="jsxComponent-AutoComplete-PopUpContainer">&#160;</div>
+                </div>
+              </td>
+              <td class="b-form-wib-button-container">
+                <button class="jsxComponent-Tags-Appender jsx-component-autocomplete-selected-hidden">&#160;+&#160;</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>

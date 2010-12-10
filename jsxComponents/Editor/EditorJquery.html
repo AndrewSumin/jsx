@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Редактор Jquery</title>
+    <script type="text/javascript" src="../../jsx.js">
+      return {
+        autoinit:true,
+        base:'jquery',
+        build:'1'
+      };
+    </script>
+    <style type="text/css">
+      body{
+        font-family:arial;
+        font-size:.8em;
+        width:50%;
+        margin:10px auto;
+      }
+      .jsxComponents-Editor{
+        -moz-box-shadow: 1px 1px 3px 0px #666;
+        -webkit-box-shadow: 1px 1px 3px 0px #666;
+        -moz-border-radius:3px
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jsx-component b-editor" onclick="return {types:['{jsxComponents}.Editor']}">
+      <textarea>Введите текст</textarea>
+    </div>
+  </body>
+</html>

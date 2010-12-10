@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>strings.js tests</title>
+        <link rel="stylesheet" type="text/css" href="../css/jsUnitStyle.css">
+        <script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+        <script language="JavaScript" type="text/javascript" src="jsmock/mock.js"></script>
+        <script language="JavaScript" type="text/javascript" src="../jsx.js">
+          return {base:'jquery'}
+        </script>
+        <script language="JavaScript" type="text/javascript" src="../Strings.js"></script>
+    </head>
+    <body>
+    </body>
+    <script language="JavaScript" type="text/javascript">
+        function setUp(){
+        }
+        function tearDown(){
+        }
+        function test_String(){
+            assertEquals('foo bar', jsx.Strings.printf('foo %s', 'bar'));
+            assertEquals('foo bar foo bar1', jsx.Strings.printf('foo %s foo %s', ['bar', 'bar1']));
+            assertEquals('foo bar foo ', jsx.Strings.printf('foo %s foo %s', 'bar'));
+        }
+        function test_StringNumbers(){
+            assertEquals('1', jsx.Strings.printf('%d', 1));
+            assertEquals('01', jsx.Strings.printf('%02d', 1));
+            assertEquals('001', jsx.Strings.printf('%03d',1));
+            assertEquals('1', jsx.Strings.printf('%d', 1));
+            assertEquals('0', jsx.Strings.printf('%d', 0));
+            assertEquals('00', jsx.Strings.printf('%02d',0));
+        }
+        function test_StringPerset(){
+            assertEquals('%', jsx.Strings.printf('%%'));
+        }
+        function test_StringAll(){
+            assertEquals('% 01 foo', jsx.Strings.printf('%% %02d %s', [1, 'foo']));
+        }
+        function test_conversion(){
+            var i, words = ['письмо', 'писем', 'письма'];
+
+            assertEquals('1 письмо', jsx.Strings.conversion(1, words));
+            assertEquals('2 письма', jsx.Strings.conversion(2, words));
+            assertEquals('5 писем', jsx.Strings.conversion(5, words));
+            assertEquals('9 писем', jsx.Strings.conversion(9, words));
+            assertEquals('15 писем', jsx.Strings.conversion(15, words));
+            assertEquals('21 письмо', jsx.Strings.conversion(21, words));
+            assertEquals('44 письма', jsx.Strings.conversion(44, words));
+
+            for (i = 5; i <= 20; i++) {
+                assertEquals(i+' писем', jsx.Strings.conversion(i, words));
+            }
+
+            for (i = 2; i <= 3; i++) {
+                assertEquals(i+' письма', jsx.Strings.conversion(i, words));
+            }
+
+            assertEquals('101 письмо', jsx.Strings.conversion(101, words));
+            assertEquals('103 письма', jsx.Strings.conversion(103, words));
+            assertEquals('206 писем', jsx.Strings.conversion(206, words));
+            assertEquals('217 писем', jsx.Strings.conversion(217, words));
+            assertEquals('2170 писем', jsx.Strings.conversion(2170, words));
+            assertEquals('2000345 писем', jsx.Strings.conversion(2000345, words));
+        }
+        function test_cut(){
+          assertEquals('123456789', jsx.Strings.cut('123456789'));
+          assertEquals('', jsx.Strings.cut('123456789', 0));
+          assertEquals('123789', jsx.Strings.cut('123456789', 3, 3));
+        }
+        
+        function test_divideNumber(){
+          assertEquals('123 456 789', jsx.Strings.divideNumber(123456789));
+        }
+
+    </script>
+ </html>
+

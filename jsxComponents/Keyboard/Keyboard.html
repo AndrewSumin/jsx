@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <title>Клавиатура</title>
+        <script src="../../jsx.js">
+          return {autoinit:true, base:'jquery', build:'12'}
+        </script>
+        <style>
+          html, body {
+            font-family:Trebuchet MS, Arial;
+            margin:0;
+            padding:0;
+            background:#f2f3e6;
+            font-size:1.7em;
+            -moz-user-select:-moz-none;
+            height:100%;
+          }
+          input {
+            font-family:Trebuchet MS, Arial;
+            display:block;
+            margin:1em auto;
+            font-size:1.5em;
+            width:13.4em;
+            -moz-user-select:text;
+            padding: 3px 10px;
+          }
+        </style>
+    </head>
+    <body ondragstart="return false;">
+      <div class="jsx-component" onclick="return {types:['{jsxComponents}.Keyboard.Input']}">
+        <input class="jsxComponents-Keyboard-Input"/>
+      </div>
+      
+      <!--div class="jsx-component" onclick="return {types:['{jsxComponents}.Keyboard']}">
+      </div-->
+    </body>
+</html>

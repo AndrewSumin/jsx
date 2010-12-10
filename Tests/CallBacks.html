@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>callback.js tests</title>
+    <link rel="stylesheet" type="text/css" href="../css/jsUnitStyle.css">
+    <script type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../jsx.js">
+        return {base:'jquery'}
+    </script>
+    <script language="JavaScript" type="text/javascript" src="../Utils.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../CallBacks.js"></script>
+    <script type="text/javascript">
+        function test_Init() {
+            var load = false;
+            jsx.CallBacks.add('load', function() {
+                load = true
+            });
+            jsx.CallBacks.dispatch('load');
+            assertTrue(load);
+        }
+        function test_ObjectInit() {
+            var load = false;
+
+            var object = {
+                init: function() {
+                    load = true;
+                }
+            }
+            jsx.CallBacks.add('load', function() {
+                object.init()
+            }, object);
+
+            jsx.CallBacks.dispatch('load', object);
+            assertTrue(load);
+        }
+        function test_Objects() {
+            var init = false;
+            var afterinit = false;
+
+            var objectOne = {
+                init: function() {
+                    jsx.CallBacks.add('init', function(e) {
+                        init = e.value
+                    }, objectTwo);
+                    jsx.CallBacks.add('afterinit', function(e) {
+                        afterinit = e.value
+                    }, objectTwo);
+                }
+            }
+            jsx.CallBacks.add('load', function() {
+                objectOne.init()
+            }, objectOne);
+
+            var objectTwo = {
+                init: function() {
+                    jsx.CallBacks.dispatch('init', this, {value: true});
+                },
+                afterinit: function() {
+                    jsx.CallBacks.dispatch('afterinit', this, {value: true});
+                }
+            }
+
+            jsx.CallBacks.dispatch('load', objectOne);
+
+            objectTwo.init();
+            assertTrue(init);
+            assertFalse(afterinit);
+
+            objectTwo.afterinit();
+            assertTrue(init);
+            assertTrue(afterinit);
+        }
+
+        function test_StopStart() {
+            var switcher = false;
+
+            var object = {
+                init: function() {
+                    switcher = !switcher;
+                }
+            }
+            var event = jsx.CallBacks.add('switch', function() {
+                object.init()
+            }, object, false);
+
+            jsx.CallBacks.dispatch('switch', object);
+            assertFalse(switcher);
+
+            event.start();
+            jsx.CallBacks.dispatch('switch', object);
+            assertTrue(switcher);
+
+            event.stop();
+            jsx.CallBacks.dispatch('switch', object);
+            assertTrue(switcher);
+        }
+
+        function test_ExecAndRemoveListeners() {
+            var switcher = 0;
+
+            var object = {};
+
+            var listener_first = jsx.CallBacks.add('test', function () {
+                switcher += "1";
+            }, object, true);
+            var listener_second = jsx.CallBacks.add('test', function () {
+                switcher += "2";
+                jsx.CallBacks.remove(listener_third);
+                jsx.CallBacks.remove(listener_first);
+            }, object, true);
+            var listener_third = jsx.CallBacks.add('test', function () {
+                switcher += "3";
+            }, object, true);
+
+            switcher = "";
+            jsx.CallBacks.dispatch('test', object);
+            assertEquals("12", switcher);
+        }
+
+        function test_TypeStar() {
+            var switcher = false;
+
+            var object = {};
+            jsx.CallBacks.add('*', function() {
+                switcher = !switcher
+            }, object, true);
+
+            jsx.CallBacks.dispatch('foo', object);
+            assertTrue(switcher);
+        }
+
+        function test_ElementStar() {
+            var switcher = false;
+
+            var object = {};
+            jsx.CallBacks.add('foo', function() {
+                switcher = !switcher
+            }, '*', true);
+            jsx.CallBacks.dispatch('foo', object);
+            assertTrue(switcher);
+        }
+
+        function test_BothStar() {
+            var switcher = false;
+
+            var object = {};
+            jsx.CallBacks.add('*', function() {
+                switcher = !switcher
+            }, '*', true);
+
+            jsx.CallBacks.dispatch('foo', object);
+            assertTrue(switcher);
+        }
+
+        function test_remove() {
+            var switcher = false;
+
+            var object = {};
+            var listener = jsx.CallBacks.add('foo', function() {
+                switcher = !switcher
+            }, object, true);
+
+            jsx.CallBacks.dispatch('foo', object);
+            assertTrue(switcher);
+
+            switcher = false;
+            jsx.CallBacks.remove(listener);
+            jsx.CallBacks.dispatch('foo', object);
+            assertFalse(switcher);
+        }
+        function test_queryWithOneElement() {
+            var load = false;
+            jsx.CallBacks.dispatch('test_queryWithOneElement', jsx, null, 1);
+            jsx.CallBacks.add('test_queryWithOneElement', function() {
+                load = true;
+            }, jsx);
+            assertTrue(load);
+        }
+
+        function test_queryWithOneElementWithStar() {
+            var counter = 0;
+            var foo = {};
+            var bar = {};
+            jsx.CallBacks.dispatch('test_queryWithOneElementWithStar', foo, null, 1);
+            jsx.CallBacks.dispatch('test_queryWithOneElementWithStar', bar, null, 1);
+            jsx.CallBacks.add('test_queryWithOneElementWithStar', function() {
+                counter++;
+            }, '*');
+            assertTrue(counter == 2);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

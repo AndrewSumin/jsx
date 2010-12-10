@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ToggleBlock tests</title>
+    <script language="JavaScript" type="text/javascript" src="../../jquery/jquery.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../../jsx.js" onload="return {autoinit:true}"></script>
+    <script language="JavaScript" type="text/javascript" src="../../jsxComponents/jsxComponents.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../../jsxComponents/ToggleBlock/ToggleBlockCommon.js"></script>
+    <style type="text/css">
+      .b-collapse .b-body{
+        display:none;
+      }
+      .b-body{
+        height:100px;
+        border:1px solid #ccc;       
+      }
+    </style>
+  </head>
+  <body>
+    <div class="b-toggle jsx-component" onclick="return {types: ['{jsxComponents}.ToggleBlock'], '{jsxComponents}.ToggleBlock': {collapseClass:'b-collapse'}}">
+      <a href="#" class="b-switcher jsxComponents-ToggleBlock-Switcher">нажмите на ссылку</a>
+      <div class="b-body">Этот текст должен появляться/пропадать</div>
+    </div>
+  </body>
+</html>

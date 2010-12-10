@@ -1,0 +1,123 @@
+.b-autocomplete{
+  width:100%;
+  zoom:1;
+}
+  .b-autocomplete-hidden{
+    display:none;
+  }
+
+  .b-autocomplete-input{
+    margin:0;
+    padding:0;
+    width:100%;
+    zoom:1;
+  }
+  .jsxComponent-AutoComplete-PopUpContainer,
+  .b-autocomplete-popup-container{
+    position: relative;
+    z-index:100;
+    zoom:1;
+  }
+  .jsxComponent-AutoComplete-PopUp,
+  .b-autoComplete-popup{
+    position:absolute;
+    z-index:999;
+    left:0;
+    background:window;
+    width:100%;
+  }
+    .b-autoComplete-popup-content{
+      height:100px;
+      overflow-x:hidden;
+      overflow-y:auto;
+      border:1px solid activeborder;
+    }
+      .b-autoComplete-popup-content-rubber{
+        height:auto;
+      }
+    .b-autoComplete-popup-item{
+      padding:1px 2px;
+      /*height:13px;*/
+      cursor:pointer;
+      color:InfoText;
+      /*white-space:nowrap;*/
+    }
+      .b-autoComplete-popup-item-selected{
+        background:highlight;
+        color:highlighttext;
+      }
+    .b-autoComplete-popup-iframe{
+      display:none;
+    }
+    .b-autoComplete-popup-iframe{
+      display:expression(runtimeStyle.display = 'block');
+      position:absolute;
+      left:0;
+      margin-top:1px;
+      height:expression(parentNode.offsetHeight + 'px');
+      width:100%;
+      z-index:-1;
+    }
+    
+    .jsx-component-autocomplete-null .jsx-component-autocomplete-null-input{
+      color:red;
+      text-decoration:underline;
+    }
+    
+    .jsx-component-autocomplete-null-block,
+    .jsx-component-autocomplete-null-line,
+    .jsx-component-autocomplete-clear-block,
+    .jsx-component-autocomplete-clear-line,
+    .jsx-component-autocomplete-filled-block,
+    .jsx-component-autocomplete-filled-line,
+    .jsx-component-autocomplete-selected-block,
+    .jsx-component-autocomplete-selected-line{
+      display:none;
+    }
+    
+    .jsx-component-autocomplete-null-hidden,
+    .jsx-component-autocomplete-clear-hidden,
+    .jsx-component-autocomplete-filled-hidden,
+    .jsx-component-autocomplete-selected-hidden{
+      visibility:hidden;
+    }
+    
+    .jsx-component-autocomplete-selected .jsx-component-autocomplete-selected-block{
+      display:block;
+    }
+    .jsx-component-autocomplete-selected .jsx-component-autocomplete-selected-line{
+      display:inline;
+    }
+    .jsx-component-autocomplete-selected .jsx-component-autocomplete-selected-hidden{
+      visibility:visible;
+    }
+    
+    .jsx-component-autocomplete-null .jsx-component-autocomplete-null-block{
+      display:block;
+    }
+    .jsx-component-autocomplete-null .jsx-component-autocomplete-null-line{
+      display:inline;
+    }
+    .jsx-component-autocomplete-null .jsx-component-autocomplete-null-hidden{
+      visibility:visible;
+    }
+    
+    .jsx-component-autocomplete-clear .jsx-component-autocomplete-clear-block{
+      display:block;
+    }
+    .jsx-component-autocomplete-clear .jsx-component-autocomplete-clear-line{
+      display:inline;
+    }
+    .jsx-component-autocomplete-clear .jsx-component-autocomplete-clear-hidden{
+      visibility:visible;
+    }
+
+    .jsx-component-autocomplete-filled .jsx-component-autocomplete-filled-block{
+      display:block;
+    }
+    .jsx-component-autocomplete-filled .jsx-component-autocomplete-filled-line{
+      display:inline;
+    }
+    .jsx-component-autocomplete-filled .jsx-component-autocomplete-filled-hidden{
+      visibility:visible;
+    }

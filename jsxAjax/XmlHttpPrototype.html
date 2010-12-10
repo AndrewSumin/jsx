@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <title>Prototype jQuery</title>
+        <script src="../jsx.js" onload="return {autoinit:true, base:'prototype'}"></script>
+        <script>
+          jsx.require('{jsxAjax}.XmlHttp', function(){
+            new jsxAjax.XmlHttp.Request('/', {
+              method: 'get',
+              parameters: {jsx: 'jsx'},
+              onSuccess: function(transport){
+                console.log(transport.responseText);
+              }
+            })
+          })
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

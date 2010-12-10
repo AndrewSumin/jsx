@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <title>Автокомплит Prototype</title>
+        <script src="../../jsx.js">
+          return {autoinit:true, base:'jquery'};
+        </script>
+        <style type="text/css">
+          .b-autocomplete{
+            font-family:Tahoma;
+            width:300px;
+          }
+        </style>
+    </head>
+    <body>
+      <div class="jsx-component b-autocomplete" onclick="return {types:['{jsxComponents}.AutoComplete'], '{jsxComponents}.AutoComplete':{src:'DataExample.js', id:'Cities'}}">
+        <input class="b-autocomplete-input jsxComponent-AutoComplete-Input" autocomplete="off"/>
+        <div class="b-hhgmap-point-autocomplete"> 
+          <div class="b-autocomplete-hidden b-autoComplete-popup jsxComponent-AutoComplete-PopUp">
+            <iframe frameborder="no" scrolling="no" class="b-autoComplete-popup-iframe">&shy;</iframe>
+            <div class="b-autoComplete-popup-content b-autoComplete-popup-content-rubber jsxComponent-AutoComplete-PopUp-Content">&nbsp;</div>
+          </div>
+        </div>
+    </body>
+</html>
