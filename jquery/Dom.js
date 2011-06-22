@@ -1,4 +1,5 @@
 jsx.require (['jquery.jquery'], function(){
+  jsx.Dom = {};
   jsx.Dom.hasClassName = function(element, className){
     if (!element || !element.nodeType){
       return;
@@ -71,5 +72,10 @@ jsx.require (['jquery.jquery'], function(){
       if (element == originalAncestor) return true;
     return false;
   };
+
+  jsx.Dom.getParent = function(element, selector){
+    return jsx.toArray($(element).parents(selector))[0];
+  };
+
   jsx.loaded('jquery.Dom');
 });

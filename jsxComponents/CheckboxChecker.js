@@ -46,5 +46,5 @@ jsx.Components.buildComponent('{jsxComponents}.CheckboxChecker',
 
 
   },
-  ['Dom', 'Events']
+  ['Dom', 'Events', '{jsxAjax}.XmlHttp']
 );

@@ -35,10 +35,14 @@ jsx.Components = new function (){
       return;
     }
     var params = this.getParams(component);
-    for (var i = 0, l = params.types.length; i < l; i++){
-      var componentName = params.types[i];
-      this.createComponent(componentName, component, typeof(params[componentName]) != 'undefined' ? params[componentName] : {} );
+
+    if (params.types) {
+        for (var i = 0, l = params.types.length; i < l; i++){
+          var componentName = params.types[i];
+          this.createComponent(componentName, component, typeof(params[componentName]) != 'undefined' ? params[componentName] : {} );
+        }
     }
+
     jsx.Dom.removeClassName(component, this.className);
     component = null;
   };
@@ -138,7 +142,7 @@ jsx.Components = new function (){
     object.removeAttribute('onclick');
     object.onclick = {};
     object = null;
-    return params;
+    return params || {};
   };
 
   this.buildComponent = function(name, constructor, requireList){

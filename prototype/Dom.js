@@ -1,4 +1,5 @@
 jsx.require (['prototype.prototype'], function(){
+  jsx.Dom = {};
   jsx.Dom.hasClassName = Element.Methods.hasClassName;
   jsx.Dom.removeClassName = Element.Methods.removeClassName;
   jsx.Dom.addClassName = Element.Methods.addClassName;
@@ -9,7 +10,7 @@ jsx.require (['prototype.prototype'], function(){
   
   jsx.Dom.getElementsBySelector = function(context, selector){
     return Element.Methods.getElementsBySelector(context, selector.replace(/input\[checked=true]/ig, 'input:checked'));
-  }
+  };
   jsx.Dom.getElementBySelector = function(context, selector){
     return jsx.Dom.getElementsBySelector(context, selector)[0];
   };

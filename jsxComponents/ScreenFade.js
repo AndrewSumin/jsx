@@ -7,6 +7,9 @@ jsx.require(['Dom', 'Events', 'CallBacks'], function(){
       jsx.Dom.addClassName(this.frame, 'jsxComponents-ScreenFade-frame');
       jsx.Dom.addClassName(this.frame, 'jsxComponents-ScreenFade-hidden');
 
+      jsx.Dom.getElementsBySelector(this.element, '.jsxComponents-ScreenFade-Hide')
+          .forEach((function(element){jsx.Events.observe(element, 'click', this.dispatch.bind(this))}).bind(this));
+
       this.createIframe();
       this.createShadow();
       this.createContainer();
@@ -21,7 +24,7 @@ jsx.require(['Dom', 'Events', 'CallBacks'], function(){
 
     createShadow: function() {
       var shadow = document.createElement('div');
-      jsx.Events.observe(shadow, 'click', jsx.bind(this, this.dispatch));
+      jsx.Events.observe(shadow, 'click', this.dispatch.bind(this));
       jsx.Dom.addClassName(shadow, 'jsxComponents-ScreenFade-shadow');
       this.frame.appendChild(shadow);
     },
@@ -37,7 +40,7 @@ jsx.require(['Dom', 'Events', 'CallBacks'], function(){
         jsx.Dom.addClassName(this.closer, 'jsxComponents-ScreenFade-closer');
         jsx.Dom.addClassName(this.closer, 'b-popup-closer');
         this.closer.innerHTML = '<img src="' + jsx.ConstructURL.construct('{jsxComponents}.ScreenFade.close', 'gif') + '" alt="Закрыть" title="Закрыть"/>';
-        jsx.Events.observe(this.closer, 'click', jsx.bind(this, this.dispatch));
+        jsx.Events.observe(this.closer, 'click', this.dispatch.bind(this));
       }else{
         parent.appendChild(this.closer);
       }

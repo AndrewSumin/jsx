@@ -1,5 +1,5 @@
 jsx.require (['sizzle.sizzle'], function(){
-
+  jsx.Dom = {};
   jsx.Dom.addClassName = function( elem, classNames ) {
     (classNames || "").split(/\s+/).forEach(function(className){
       if (elem.nodeType == 1 && !jsx.Dom.hasClassName(elem.className, className)) {

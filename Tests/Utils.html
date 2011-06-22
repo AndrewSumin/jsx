@@ -16,9 +16,38 @@
     </body>
     <script language="JavaScript" type="text/javascript">
 		function setUp(){
+
 		}
 		function tearDown(){
 		}
+
+        //
+
+        function test_hash2hash(){
+            assertEquals('foo', jsx.Utils.hash2hash({foo:'bar'}, function(key, value){return [value, key]})['bar']);
+        }
+        function test_hash2array(){
+            assertEquals('foobar', jsx.Utils.hash2array({foo:'bar'}, function(key, value){return key + value})[0]);
+        }
+        function test_keys(){
+            assertEquals('foobar', jsx.Utils.keys({foo:'', bar:''})[0] + jsx.Utils.keys({foo:'', bar:''})[1]);
+        }
+        function test_values(){
+            assertEquals('foobar', jsx.Utils.values({foo:'foo', bar:'bar'})[0] + jsx.Utils.values({foo:'foo', bar:'bar'})[1]);
+        }
+        function test_forEach(){
+            var result = '';
+            jsx.Utils.forEach({foo:'bar'}, function(key, value){result = key + value});
+            assertEquals('foobar', result);
+        }
+
+        function test_contains(){
+
+            assertTrue(jsx.Utils.contains('foo',['foo','bar']));
+            assertTrue(jsx.Utils.contains('f','foo'));
+            assertFalse(jsx.Utils.contains('foo', undefined));
+            
+        }
 	</script>
 </html>
 

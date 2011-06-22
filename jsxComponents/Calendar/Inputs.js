@@ -50,6 +50,7 @@ jsx.require(['Events', '{jsxComponents}.Calendar', 'CallBacks', 'Dates'], functi
       this.calendarContainer.appendChild(this.calendarIframe);      
     };
     this.createCalendar = function(params){
+      this.createProxyEvent('jsxComponents-Calendar-Init');
       this.calendar = jsxComponents.Calendar.init(this.calendarContainer, params);
       this.createProxyEvent('jsxComponents-Calendar-ChangeYear');
       this.createProxyEvent('jsxComponents-Calendar-ChangeMonth');

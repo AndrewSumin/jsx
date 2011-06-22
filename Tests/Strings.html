@@ -73,6 +73,16 @@
         function test_divideNumber(){
           assertEquals('123 456 789', jsx.Strings.divideNumber(123456789));
         }
+        
+        function test_linkify(){
+          assertEquals('<a href="http://www.hh.ru" target="_blank">http://www.hh.ru</a>', jsx.Strings.linkify('http://www.hh.ru'));
+          assertEquals('<a href="http://www.h-h.ru" target="_blank">http://www.h-h.ru</a>', jsx.Strings.linkify('http://www.h-h.ru'));
+          assertEquals('<a href="http://www.h-h.ru" target="_blank">http://www.h-h.ru</a>', jsx.Strings.linkify('http://www.h-h.ru'));
+          assertEquals('<a href="http://www.h-h.ru" target="_blank">www.h-h.ru</a>', jsx.Strings.linkify('www.h-h.ru'));
+          assertEquals('<div><a href="http://www.h-h.ru" target="_blank">www.h-h.ru</a></div>', jsx.Strings.linkify('<div>www.h-h.ru</div>'));
+          assertEquals('<div>><a href="http://www.h-h.ru" target="_blank">www.h-h.ru</a> text</div>', jsx.Strings.linkify('<div>>www.h-h.ru text</div>'));
+
+        }
 
     </script>
  </html>

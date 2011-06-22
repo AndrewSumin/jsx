@@ -104,6 +104,46 @@ if (!A.remove){
       return this.push.apply(this, rest);
     };
 }
+
+if (!Array.prototype.reduce) {
+  Array.prototype.reduce = function(fun /*, initialValue */)
+  {
+    "use strict";
+    if (this === void 0 || this === null)
+      throw new TypeError();
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (typeof fun !== "function")
+      throw new TypeError();
+    // no value to return if no initial value and an empty array
+    if (len == 0 && arguments.length == 1)
+      throw new TypeError();
+    var k = 0;
+    var accumulator;
+    if (arguments.length >= 2){
+      accumulator = arguments[1];
+    } else {
+      do {
+        if (k in t) {
+          accumulator = t[k++];
+          break;
+        }
+        // if array contains no values, no initial value to return
+        if (++k >= len)
+          throw new TypeError();
+      }
+      while (true);
+    }
+    while (k < len) {
+      if (k in t)
+        accumulator = fun.call(undefined, accumulator, t[k], k, t);
+      k++;
+    }
+    return accumulator;
+  };
+}
+
+
 jsx.getReadyState = function(){
   return document.readyState || 'loading';
 };
@@ -164,6 +204,22 @@ jsx.init = function(){
   jsx.getBaseAndSetAlias('jsx', 'jsx.js', 'utf-8', setParamsAndInitLocator);
 };
 
+if ( !Function.prototype.bind ) {
+  Function.prototype.bind = function( obj ) {
+    var args = [].slice.call(arguments, 1),
+        self = this,
+        nop = function () {},
+        bound = function () {
+          return self.apply( this instanceof nop ? this : ( obj || {} ),
+                              args.concat( [].slice.call(arguments) ) );
+        };
+    nop.prototype = self.prototype;
+    bound.prototype = new nop();
+    return bound;
+  };
+}
+
+
 jsx.bind = function(){
   var args = jsx.toArray(arguments), object = args.shift(), executer = args.shift();
   return function() {
@@ -180,7 +236,7 @@ jsx.toArray = function(object){
 };
 
 jsx.isArray = function(object){
-  return (object.constructor == Array)
+  return (object && object.constructor == Array)
 };
 
 /**
@@ -338,6 +394,9 @@ jsx.Scripts = new function (){
     var script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
     for (var i in attributes){
+      if (i == 'src') {
+        attributes[i] = encodeURI(attributes[i]);
+      }
       script.setAttribute(i, attributes[i]);
     }
     // InsertBefore for IE.

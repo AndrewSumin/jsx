@@ -34,7 +34,7 @@ jsxComponents.Slider.Constructor.prototype = new function () {
     jsx.CallBacks.add('jsxComponents-Slider-DispatchStatus', jsx.bind(this, this.dispatchMove), this.slider);
     this.maxIndex = this.values ? this.values.length - 1 : this.scaleSize;
     jsx.CallBacks.add('jsxComponents-Slider-SetValue', jsx.bind(this, this.setIndexForce), this.slider);
-
+    jsx.CallBacks.add('jsxComponents-Slider-SetValueByValue', jsx.bind(this, this.setValueForce), this.slider);
     this.index = this.getIndexFromValue(params.value || this.hidden.value);
     this.waitFoRenderAndSetIndex();
 
@@ -70,9 +70,16 @@ jsxComponents.Slider.Constructor.prototype = new function () {
       var curVal = params.range[0] * this.coefficient;
       var end = params.range[1] * this.coefficient;
       var array = [];
-      while(curVal < end) {
-        array[array.length] = curVal;
-        curVal += step;
+      if (curVal < end) {
+        while(curVal < end) {
+          array[array.length] = curVal;
+          curVal += step;
+        }
+      } else {
+        while(curVal > end) {
+          array[array.length] = curVal;
+          curVal -= step;
+        }
       }
       array[array.length] = end;
       return array;
@@ -267,6 +274,9 @@ jsxComponents.Slider.Constructor.prototype = new function () {
     this.stop();
   };
 
+  this.setValueForce = function(value){
+    this.setIndexForce(this.getIndexFromValue(value));
+  };
   this.setIndexForce = function(index){
     this.dontDispatch = true;
     this.start();

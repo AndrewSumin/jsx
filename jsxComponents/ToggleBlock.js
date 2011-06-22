@@ -54,6 +54,16 @@ jsxComponents.ToggleBlock.Constructor.prototype = new function(){
         this.dispatch();
         if (this.closeByClickEvent)
           this.closeByClickEvent.start();
+        if (this.params.focusOnOpen) {
+          if (!this.inputFocus) {
+            var input = jsx.Dom.$$(this.element, '.jsxComponents-ToggleBlock-focusOnOpen');
+            if (input) {
+              this.inputFocus = input;
+            }
+          }
+          if (this.inputFocus)
+            this.inputFocus.focus();
+        }
         break;
 
       case 'collapse':
@@ -103,8 +113,7 @@ jsxComponents.ToggleBlock.Constructor.prototype = new function(){
   };
 
   this.dispatch = function(){
-    var switchState = jsx.Dom.hasClassName(this.element, this.expandClass) ? 'expand' : 'collapse';
-    jsx.CallBacks.dispatch('jsxComponents-ToggleBlock-Switch', this.element, switchState);
+    jsx.CallBacks.dispatch('jsxComponents-ToggleBlock-Switch', this.element, this);
     if (this.params.forceRedraw) {
       jsx.Dom.redraw();
     }

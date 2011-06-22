@@ -47,7 +47,7 @@ jsxComponents.AutoComplete.Constructor.prototype = new function(){
     var data = params.data || '';
 
     this.input = jsx.Dom.getElementBySelector(this.element, '.jsxComponent-AutoComplete-Input');
-    this.input.autocomplete = 'off';
+    this.input.setAttribute('autocomplete', 'off');
 
     this.hidden = jsx.Dom.getElementBySelector(this.element, '.jsxComponent-AutoComplete-Hidden') || {value:''};
 
@@ -239,8 +239,7 @@ jsxComponents.AutoComplete.Constructor.prototype = new function(){
   };
 
   this.isOnlyLeft = function(data){
-    //alert([data, data.length, data[0].text.toLowerCase(), this.input.value.toLowerCase()])
-    return (data && data.length == 1 && data[0].text.toLowerCase() == this.value.toLowerCase());
+    return (data && data.length == 1 && data[0] && data[0].text.toLowerCase() == this.value.toLowerCase());
   };
 
   this.getSelected = function(){

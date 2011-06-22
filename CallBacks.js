@@ -186,6 +186,53 @@ jsx.CallBacks = new function () {
         return false;
     };
 
+    /*
+     A component says that he is ready
+     */
+    this.ready = function(obj) {
+        var c = {};
+        c.name = obj.__name;
+        c.data = obj || false;
+        this.readyComponents.push(c);
+        this.checkNeeded();
+    };
+
+    /*
+     A component says that he needs to know when another component(s) is ready
+     */
+    this.need = function(which, listener, who) {
+        for (var i = 0; i < which.length; i++) {
+            var n = {};
+            n.name = which[i];
+            n.listener = listener;
+            n.called = [];
+            n.who = who.__name;
+            this.neededComponents.push(n);
+        }
+    };
+
+    /*
+     Check if needed components are ready and fire corresponding listeners
+     */
+    this.checkNeeded = function() {
+
+        if (!this.neededComponents.length)
+            return;
+
+        for (var n = 0, ln = this.neededComponents.length; n < ln; n++) {
+            for (var r = 0, lr = this.readyComponents.length; r < lr; r++) {
+                if (this.neededComponents[n].name == this.readyComponents[r].name) {
+                    var requester = this.neededComponents[n];
+                    var requested = this.readyComponents[r];
+                    if (requester.called.indexOf(r) == -1) {
+                        requester.listener(requested.name, requested.data);
+                        requester.called.push(r);
+                    }
+                }
+            }
+        }
+    };
+
 };
 
 /**
